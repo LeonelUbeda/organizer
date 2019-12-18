@@ -1,0 +1,41 @@
+#sidebar{
+    /*background-color: #C2BBF0;
+    background-color: white*/
+}
+
+#sidebar h2{
+    color: white;
+    color: black
+}
+
+#root{
+    font-family: 'diary';
+    font-size: 25px;
+}
+.animacion{
+    max-height: 50px !important;
+    transition: max-height 0.5s linear;
+
+   
+}
+
+.animacion-0{
+    max-height: 0;
+    transition: max-height 0.5s linear;
+
+    overflow-y: hidden;
+
+}
+
+
+@font-face {
+    font-family: 'unseen';
+    src: url('../fonts/the unseen.ttf'); /* IE9 Compat Modes */
+         
+}
+
+@font-face {
+    font-family: 'diary';
+    src: url('../fonts/Secret Diary.ttf'); /* IE9 Compat Modes */
+         
+}

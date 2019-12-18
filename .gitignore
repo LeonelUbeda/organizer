@@ -1,0 +1,10 @@
+node_modules
+coverage
+.cache
+public/index.js
+public/index.js.map
+public/index.css
+public/index.css.map
+public/index.js
+build
+
