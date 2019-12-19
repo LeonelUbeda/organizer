@@ -4,7 +4,7 @@ export default (req, res, next) => {
 
     req.isAuth = true
     req.username = 'leonel'
-    req.email = 'carlos@hotmail.com'
+    req.email = 'leonelubeda@hotmail.com'
     return next()
     
     // TEMPORAL
