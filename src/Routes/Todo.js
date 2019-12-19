@@ -1,5 +1,6 @@
 import {Router} from 'express'
 const router = Router();
+
 // Modelos
 import Journal from '../Models/Organizer/Journal'
 import JournalDay from '../Models/Organizer/JournalDay';
@@ -10,6 +11,14 @@ import checkOnlyTwo from '../Controllers/checkOnlyTwo'
 import genericHandler from '../Controllers/genericHandler';
 
 
+
+router.get('/', (req, res, next) => {
+    const {username} = req.locals.session
+    checkOnlyTwo({
+        child: JournalDay,
+        whereConditionChild: {id: JournalDay}
+    })
+})
 
 router.post('/:journalDayId', (req, res, next) => {
     const {username} = res.locals.session

@@ -4,10 +4,18 @@ import database from '../../Database/database'
 class User extends Sequelize.Model{}
 
 User.init({
+    email: {
+        type: Sequelize.STRING(50),
+        allowNull: false,
+        primaryKey: true,
+        validate: {
+            isEmail: true
+        }
+    },
     username: {
         type: Sequelize.STRING(50),
         allowNull: false,
-        primaryKey: true
+        unique: true
     },
     password: {
         type: Sequelize.STRING(64),
@@ -21,13 +29,7 @@ User.init({
         type: Sequelize.STRING(50),
         allowNull: true
     },
-    email: {
-        type: Sequelize.STRING(50),
-        allowNull: false,
-        validate: {
-            isEmail: true
-        }
-    }
+    
 }, {
     sequelize: database,
     modelName: 'User',

@@ -1,13 +1,17 @@
 import express from 'express'
-import mongoose from 'mongoose'
+
 import {json} from 'body-parser'
 import {join} from 'path'
 import database from './Database/database'
+import graphqlHTTP from 'express-graphql'
 
+import isAuth from './Middlewares/Auth'
+
+import schema from './GraphQL/schema'
 
 
 const app = express()
-
+const PORT = 3000
 app.use((req, res, next) => {
     res.locals.session = {
         username: 'leonel'
@@ -15,6 +19,15 @@ app.use((req, res, next) => {
     next()
 })
 
+
+// Verify is user is login
+app.use(isAuth)
+
+app.use('/graphql', graphqlHTTP((request, response, graphQLParams) => ({
+    schema,
+    graphiql: true,
+    
+})))
 
 
 
@@ -34,7 +47,7 @@ app.use(json())
 
 app.use('/journals', Journal)
 app.use('/journals', JournalDay)
-app.use('/todo', Todo)
+app.use('/todos', Todo)
 app.use('/users', User)
 
 
@@ -47,4 +60,4 @@ app.use('*', (req, res) => {
 //database.sync({force: true})
 
 
-app.listen(3000)
+app.listen(PORT, () => {console.log('Server iniciado')})

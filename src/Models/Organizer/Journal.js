@@ -37,6 +37,6 @@ Journal.init({
 
 Journal.hasMany(JournalDay, {as: 'journalDay', foreignKey: 'journalId', onDelete: 'cascade', onUpdate: 'cascade'})
 
-Journal.belongsTo(User, {foreignKey: 'createdBy' , targetKey: 'username', })
+Journal.belongsTo(User, {foreignKey: 'createdBy' , targetKey: 'email', })
 
 export default Journal
